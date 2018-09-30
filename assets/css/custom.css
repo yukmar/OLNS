@@ -1,0 +1,54 @@
+*{
+	/*border: 1px red dashed;*/
+	/*font-size: 1rem;*/
+}
+body, html{
+	/*background-color: #F4F4F4;*/
+	height: 100%;
+	margin: 0;
+}
+.landing{
+	background-image: url('../img/ranu_gumbolo.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	width: 90vw;
+	left: 5rem;
+}
+.bg-dashboard{
+	background-color: #E5E5E5;
+}
+#maincontent{
+	margin: 1rem;
+	padding: 1rem 1rem;
+	min-height: 80vh;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+}
+.cover{
+	margin-top: 10rem;
+}
+.borderleft{
+	border-left: 0.2rem solid #38AA38;
+}
+.sidebarr{
+	background-color: #FFFFFF;
+	font-size: 0.9rem;
+	padding-top: 1rem;
+}
+.logsubmit{
+	padding-top: 3rem;
+}
+.side-menu{
+	width: 5rem;
+	height: 4rem;
+	float: left;
+	position: absolute;
+	z-index: 1;
+	background-color: #C82D2D;
+	
+}
+caption{
+	caption-side: top;
+	text-align: center;
+}
