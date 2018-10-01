@@ -60,12 +60,23 @@ class Logsubmit_mod extends CI_Model
 		return $this->db->select('*')->from($this->tbl)->join('bank_tuts', 'bank_tuts.id_tut = log_submit_keys.id_tut')->join('user', 'user.username = log_submit_keys.username')->order_by('date_submit', 'DESC')->limit('3')->get()->result();
 	}
 
-	function average_point($user)
+	function average_point($user, $order=null)
 	{
 		$val = array();
-		foreach ($this->db->query("select kat.id_cat, log.username, count(log.username) totsub, count(bank.id_cat) totcat from bank_tuts bank left join kategori_kejar kat on bank.id_cat = kat.id_cat left join log_submit_keys log on bank.id_tut = log.id_tut and log.username = '".$user."' group by bank.id_cat")->result() as $key => $value) {
-			$val[] = round((($value->totsub) / ($value->totcat)) * 100);
+		if ($order) {
+			$order = ' order by persen '.$order;
+		}
+		foreach ($this->db->query("select kat.id_cat, kat.name_cat, log.username, count(log.username) totsub, count(bank.id_cat) totcat, round((count(log.username)/count(bank.id_cat))*100) as persen from bank_tuts bank left join kategori_kejar kat on bank.id_cat = kat.id_cat left join log_submit_keys log on bank.id_tut = log.id_tut and log.username = '".$user."' group by bank.id_cat".$order)->result() as $key => $value) {
+			$val[$value->id_cat] = (object) array(
+				'cat' => $value->name_cat,
+				'avr' => $value->persen
+			);
 		}
 		return $val;
 	}
+
+	// function get_sumsubindv($user)
+	// {
+	// 	return $this->db->query("select u.username, u.nama, kat.id_cat, kat.name_cat, count(bank.id_cat) as jumlah from user u left join log_submit_keys log on u.username = log.username and u.username = '".$user."' left join bank_tuts bank on bank.id_tut = log.id_tut right join kategori_kejar kat on kat.id_cat = bank.id_cat group by kat.id_cat order by jumlah DESC")->result();
+	// }
 }

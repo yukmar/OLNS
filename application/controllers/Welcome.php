@@ -10,22 +10,6 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 	}
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-
 	public function index($page_no=null)
 	{
 		$alert = null;
@@ -163,10 +147,11 @@ class Welcome extends CI_Controller {
 		$data['point'] = $this->submod->count_point($this->user);
 		$data['recent_tuts'] = $this->bankmod->recent_tut();
 		$data['ranks'] = $this->usermod->get_ranks(3);
-		$data['jumsub_user'] = $this->submod->average_point($this->user);
-		foreach ($this->catmod->get_cat() as $key => $value) {
-			$data['label'][] = $value->name_cat;
+		foreach ($this->submod->average_point($this->user) as $key => $value) {
+			$data['label'][] = $value->cat;
+			$data['jumsub_user'][] = $value->avr;
 		}
+		$data['rekomen'] = $this->bankmod->get_rekomentut($this->user);
 		$this->tampilan->view($this->stat_user, 'dashboard/home_view', $data);
 	}
 }

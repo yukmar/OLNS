@@ -94,9 +94,9 @@ class User extends CI_Controller
 		$data[$var] = $this->usermod->get_usernpriv($user);
 		$data['list_tut'] = $li_tut;
 		$data['alert'] = $alert;
-		$data['jumsub_user'] = $this->submod->average_point($user);
-		foreach ($this->catmod->get_cat() as $key => $value) {
-			$data['label'][] = $value->name_cat;
+		foreach ($this->submod->average_point($user) as $key => $value) {
+			$data['label'][] = $value->cat;
+			$data['jumsub_user'][] = $value->avr;
 		}
 		$this->tampilan->view($this->stat, 'admin/user_view', $data);
 	}
