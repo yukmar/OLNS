@@ -43,7 +43,7 @@ class Kategori extends CI_Controller
 				$q = $this->catmod->select($this->input->get('no'));
 			} elseif ($aksi == 'det') {
 				$var = 'detdt';
-				$q = $this->bankmod->list_tuts($this->input->get('no'));
+				$q = $this->bankmod->list_percat($this->input->get('no'));
 			} else {
 				$var = 'spec_cat';
 				$q = $this->catmod->select($this->input->get('cat'));

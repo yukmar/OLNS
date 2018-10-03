@@ -18,6 +18,10 @@ class Banktuts_mod extends CI_Model
 		return $this->db->query("select bank.id_tut, bank.name_tut, bank.point, kat.id_cat, kat.name_cat, log.username from bank_tuts bank inner join kategori_kejar kat on kat.id_cat = bank.id_cat and kat.id_cat = '".$idcat."' left join log_submit_keys log on bank.id_tut = log.id_tut".$user)->result();
 	}
 
+	function list_percat($cat)
+	{
+		return $this->db->get_where($this->tbl, array('id_cat' => $cat))->result();
+	}
 	public function get_tuts($idtut)
 	{
 		return $this->db->get_where($this->tbl, array('id_tut' => $idtut))->result();
@@ -52,7 +56,7 @@ class Banktuts_mod extends CI_Model
 	}
 	public function recent_tut()
 	{
-		return $this->db->query('select id_tut, name_tut, point from bank_tuts order by waktu_dibuat limit 3')->result();
+		return $this->db->query('select id_tut, name_tut, point from bank_tuts order by waktu_dibuat DESC limit 3')->result();
 	}
 
 	public function get_tutncat($idtut)
@@ -95,27 +99,21 @@ class Banktuts_mod extends CI_Model
 	{
 		$mostSubmit = $this->submod->average_point($user, 'DESC');
 		$rekomentut = array();
-		$loop = 0;
 		foreach ($mostSubmit as $key => $value) {
-			if ($loop == 2) {
-				break;
-			} else {
-				$tuts_basedbycat = null;
-				$tuts_basedbycat = $this->bankmod->list_tuts($key, $user);
-				foreach ($tuts_basedbycat as $k => $val) {
-					if (!$val->username) {
-						$rekomentut[$val->id_cat] = (object)array(
-							'id' => $val->id_tut,
-							'tut' => $val->name_tut,
-							'catno' => $val->id_cat,
-							'cat' => $val->name_cat,
-							'point' => $val->point
-						);
-						continue 2;
-					}
+			$tuts_basedbycat = null;
+			$tuts_basedbycat = $this->bankmod->list_tuts($key, $user);
+			foreach ($tuts_basedbycat as $k => $val) {
+				if (!$val->username) {
+					$rekomentut[$val->id_cat] = (object)array(
+						'id' => $val->id_tut,
+						'tut' => $val->name_tut,
+						'catno' => $val->id_cat,
+						'cat' => $val->name_cat,
+						'point' => $val->point
+					);
+					continue 2;
 				}
 			}
-			$loop++;
 		}
 		return $rekomentut;
 	}

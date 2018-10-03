@@ -97,6 +97,8 @@ class Banktuts extends CI_Controller
 		$data[$var] = $this->bankmod->get_tutncat($no);
 		$data['list_u'] = $li_user;
 		$data['alert'] = $alert;
+
+		$data['pilih_kategori'] = $this->catmod->get_cat();
 		$this->tampilan->view($this->stat,'admin/bank_view', $data);
 	}
 
@@ -140,7 +142,8 @@ class Banktuts extends CI_Controller
 				redirect(site_url('banktuts/?alt=addgagal'));
 			}
 		} else {
-			redirect(site_url('banktuts/?alt=addgagal'));
+			// redirect(site_url('banktuts/?alt=addgagal'));
+			echo "string";
 		}
 	}
 

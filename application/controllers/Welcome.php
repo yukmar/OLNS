@@ -151,7 +151,7 @@ class Welcome extends CI_Controller {
 			$data['label'][] = $value->cat;
 			$data['jumsub_user'][] = $value->avr;
 		}
-		$data['rekomen'] = $this->bankmod->get_rekomentut($this->user);
+		$data['rekomen'] = $this->bankmod->get_rekomentut('user3');
 		$this->tampilan->view($this->stat_user, 'dashboard/home_view', $data);
 	}
 }

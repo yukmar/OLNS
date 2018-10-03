@@ -1,7 +1,16 @@
 <?=$alert?>
 
 <!-- Tabel Daftar Tutorial -->
-<h2 class="sub-header">BANK TUTORIAL</h2><hr />
+<div class="row">
+	<div class="col px-3">
+		<h2 class="sub-header">BANK TUTORIAL</h2><hr />
+	</div>
+	<div class="col mr-auto">
+		<form>
+			<div class="input-group"></div>
+		</form>
+	</div>
+</div>
 <div class="row">
 	<div class="col-md-auto">
 		<div class="container">
@@ -186,9 +195,6 @@
 		</div>
 	</div>
 </div>
-<div class="row">	
-	
-</div>
 <!-- End Tabel -->
 
 <!-- Modal Tambah TUtorial-->
@@ -206,7 +212,11 @@
 					</div>
 					<div class="form-group">
 						<label>Kategori</label>
-						<input type="textbox" class="form-control" name="tbcat" />
+						<select class="form-control" name="tbcat">
+							<?php foreach ($pilih_kategori as $key => $value): ?>
+								<option><?=$value->name_cat?></option>
+							<?php endforeach ?>
+						</select>
 					</div>
 					<div class="form-group">
 						<label>Point</label>

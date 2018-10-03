@@ -1,5 +1,5 @@
 <div class="row">
-	<section class="p-2">
+	<section class="py-3 px-3">
 		<h2>Dashboard</h2>
 	</section>
 </div>
