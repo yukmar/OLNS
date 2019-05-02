@@ -115,8 +115,8 @@
 							<?php $no=1; foreach ($recent_submitted as $key => $value) { ?>
 								<tr scope="row">
 									<td><?=$no++?></td>
-									<td><a href="#"><?=$value->username?></a></td>
-									<td><a href="#"><?=$value->name_tut?></a></td>
+									<td><a href="<?=site_url('user/?aksi=det&u='.$value->username)?>"><?=$value->username?></a></td>
+									<td><a href="<?=site_url('banktuts/?aksi=det&id='.$value->id_tut)?>"><?=$value->name_tut?></a></td>
 									<td><?=$value->date_submit?></td>
 								</tr>
 							<? } ?>

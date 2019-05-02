@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Online Learning Network Security</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap/css/bootstrap.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/custom.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/open-iconic-master/font/css/open-iconic-bootstrap.css')?>">

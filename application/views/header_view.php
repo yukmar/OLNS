@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Online Learning Network Security</title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/bootstrap/css/bootstrap.min.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/custom.css')?>">
 	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/open-iconic-master/font/css/open-iconic-bootstrap.css')?>">
 </head>
 <body class="bg-dashboard">
 	<!-- top navbar -->
-	<span class="p-3 mb-2 text-white text-center side-menu" data-toggle="collapse" data-target="#sidebar_collapse" aria-controls="navToggled" aria-expanded="false">
+	<!-- <span class="p-3 mb-2 text-white text-center side-menu" data-toggle="collapse" data-target="#sidebar_collapse" aria-controls="navToggled" aria-expanded="false">
 		<b>MENU</b> <span class="oi oi-chevron-bottom"></span>
-	</span>
+	</span> -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div>
+			<span class="btn btn-outline-info py-2 text-center" data-toggle="collapse" data-target="#sidebar_collapse" aria-controls="navToggled" aria-expanded="false">
+			<b>MENU</b> <span class="oi oi-chevron-bottom"></span>
+		</span>
+		</div>
 		<div class="container">
 			<a class="navbar-brand" href="<?=site_url()?>">
 				<img src="<?=base_url('assets/img/logoum.png')?>" width="100" height="40" class="d-inline-block" /> Online Learning Security Network

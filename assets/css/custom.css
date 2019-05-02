@@ -43,9 +43,9 @@ body, html{
 	width: 5rem;
 	height: 4rem;
 	float: left;
-	position: absolute;
-	z-index: 1;
-	background-color: #C82D2D;
+	/*position: absolute;*/
+	/*z-index: 1;*/
+	/*background-color: #C82D2D;*/
 	
 }
 caption{

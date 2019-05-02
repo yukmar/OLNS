@@ -13,7 +13,7 @@
 
 	<!-- Start PDF & video -->
 	<div class="row">
-	 	<div class="col ml-4" id="media-pdf">
+	 	<div class="col ml-4 px-3" id="media-pdf">
 	 		<iframe src="<?=$pdf?>" width="640" height="480"></iframe>
 		</div>
 		<div class="col" id="vid-tutorial">
